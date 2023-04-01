@@ -89,19 +89,19 @@ namespace Duc
                 {
                     if (yMinUp < transPointUp.position.y && yMaxDown > transPointDown.position.y)
                     {
-                        var yRandomUp = UnityEngine.Random.Range(yMinUp, Mathf.Min(yMinUp + maxDistanceObstacle / 2, transPointUp.position.y));
-                        var yRandomDown = UnityEngine.Random.Range(Mathf.Max(yMaxDown - maxDistanceObstacle / 2, transPointDown.position.y), yMaxDown);
+                        var yRandomUp = UnityEngine.Random.Range(yMinUp, yMinUp + maxDistanceObstacle / 2 < transPointUp.position.y ? transPointUp.position.y : yMinUp + maxDistanceObstacle / 2);
+                        var yRandomDown = UnityEngine.Random.Range(yMaxDown - maxDistanceObstacle / 2 > transPointDown.position.y ? transPointDown.position.y : yMaxDown - maxDistanceObstacle / 2, yMaxDown);
                         var yRandom = UnityEngine.Random.Range(0, 2) == 0 ? yRandomUp : yRandomDown;
                         beginPos.y = yRandom;
                     }
                     else if (yMinUp < transPointUp.position.y)
                     {
-                        var yRandomUp = UnityEngine.Random.Range(yMinUp, Mathf.Min(yMinUp + maxDistanceObstacle / 2, transPointUp.position.y));
+                        var yRandomUp = UnityEngine.Random.Range(yMinUp, yMinUp + maxDistanceObstacle / 2 < transPointUp.position.y ? transPointUp.position.y : yMinUp + maxDistanceObstacle / 2);
                         beginPos.y = yRandomUp;
                     }
                     else if (yMaxDown > transPointDown.position.y)
                     {
-                        var yRandomDown = UnityEngine.Random.Range(Mathf.Max(yMaxDown - maxDistanceObstacle / 2, transPointDown.position.y), yMaxDown);
+                        var yRandomDown = UnityEngine.Random.Range(yMaxDown - maxDistanceObstacle / 2 > transPointDown.position.y ? transPointDown.position.y : yMaxDown - maxDistanceObstacle / 2, yMaxDown);
                         beginPos.y = yRandomDown;
                     }
                 }
